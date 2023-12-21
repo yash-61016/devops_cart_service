@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "H38HxvsFtAXGzpFaslr/4NlKRZM1w5zTqnMifPvmT2I=",
+  "Source": "devops_cart_service",
+  "BasePath": "_content/devops_cart_service",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
