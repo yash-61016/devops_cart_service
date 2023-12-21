@@ -1,4 +1,8 @@
+using AutoMapper;
+using devops_cart_service;
 using devops_cart_service.Data;
+using devops_cart_service.Repository;
+using devops_cart_service.Repository.IRepository;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,10 +12,17 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddScoped<ICartOverviewRepository, CartOverviewRepository>();
+builder.Services.AddScoped<ICartProductRepository, CartProductRepository>();
+
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnectionString");
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(connectionString));
+
+IMapper mapper = MappingConfig.RegisterMaps().CreateMapper();
+builder.Services.AddSingleton(mapper);
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 var app = builder.Build();
 
@@ -44,7 +55,22 @@ app.MapGet("/weatherforecast", () =>
 .WithName("GetWeatherForecast")
 .WithOpenApi();
 
+ApplyMigration();
 app.Run();
+
+
+void ApplyMigration()
+{
+    using (var scope = app.Services.CreateScope())
+    {
+        var _db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+
+        if (_db.Database.GetPendingMigrations().Count() > 0)
+        {
+            _db.Database.Migrate();
+        }
+    }
+}
 
 record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
 {
