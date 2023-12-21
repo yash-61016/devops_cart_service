@@ -31,3 +31,17 @@
 /Users/yashpatel/developer/z_repos/uni_devops/devops_cart_service/devops_cart_service/obj/Debug/net7.0/devops_cart_service.pdb
 /Users/yashpatel/developer/z_repos/uni_devops/devops_cart_service/devops_cart_service/obj/Debug/net7.0/devops_cart_service.genruntimeconfig.cache
 /Users/yashpatel/developer/z_repos/uni_devops/devops_cart_service/devops_cart_service/obj/Debug/net7.0/ref/devops_cart_service.dll
+/Users/yashpatel/developer/z_repos/uni_devops/devops_cart_service/devops_cart_service/bin/Debug/net7.0/AutoMapper.dll
+/Users/yashpatel/developer/z_repos/uni_devops/devops_cart_service/devops_cart_service/bin/Debug/net7.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+/Users/yashpatel/developer/z_repos/uni_devops/devops_cart_service/devops_cart_service/bin/Debug/net7.0/FluentValidation.dll
+/Users/yashpatel/developer/z_repos/uni_devops/devops_cart_service/devops_cart_service/bin/Debug/net7.0/FluentValidation.DependencyInjectionExtensions.dll
+/Users/yashpatel/developer/z_repos/uni_devops/devops_cart_service/devops_cart_service/bin/Debug/net7.0/Humanizer.dll
+/Users/yashpatel/developer/z_repos/uni_devops/devops_cart_service/devops_cart_service/bin/Debug/net7.0/Microsoft.EntityFrameworkCore.dll
+/Users/yashpatel/developer/z_repos/uni_devops/devops_cart_service/devops_cart_service/bin/Debug/net7.0/Microsoft.EntityFrameworkCore.Abstractions.dll
+/Users/yashpatel/developer/z_repos/uni_devops/devops_cart_service/devops_cart_service/bin/Debug/net7.0/Microsoft.EntityFrameworkCore.Design.dll
+/Users/yashpatel/developer/z_repos/uni_devops/devops_cart_service/devops_cart_service/bin/Debug/net7.0/Microsoft.EntityFrameworkCore.Relational.dll
+/Users/yashpatel/developer/z_repos/uni_devops/devops_cart_service/devops_cart_service/bin/Debug/net7.0/Microsoft.Extensions.DependencyModel.dll
+/Users/yashpatel/developer/z_repos/uni_devops/devops_cart_service/devops_cart_service/bin/Debug/net7.0/Mono.TextTemplating.dll
+/Users/yashpatel/developer/z_repos/uni_devops/devops_cart_service/devops_cart_service/bin/Debug/net7.0/Npgsql.dll
+/Users/yashpatel/developer/z_repos/uni_devops/devops_cart_service/devops_cart_service/bin/Debug/net7.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll
+/Users/yashpatel/developer/z_repos/uni_devops/devops_cart_service/devops_cart_service/bin/Debug/net7.0/System.CodeDom.dll
