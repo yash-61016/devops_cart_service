@@ -1,8 +1,12 @@
 using AutoMapper;
 using devops_cart_service;
 using devops_cart_service.Data;
+using devops_cart_service.Endpoints;
+using devops_cart_service.Filters;
+using devops_cart_service.Models.Dto;
 using devops_cart_service.Repository;
 using devops_cart_service.Repository.IRepository;
+using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,15 +19,16 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<ICartOverviewRepository, CartOverviewRepository>();
 builder.Services.AddScoped<ICartProductRepository, CartProductRepository>();
 
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnectionString");
+var connectionString = builder.Configuration.GetConnectionString("CartDbConnectionString");
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(connectionString));
-
+builder.Services.AddValidatorsFromAssemblyContaining<Program>();
 IMapper mapper = MappingConfig.RegisterMaps().CreateMapper();
 builder.Services.AddSingleton(mapper);
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-
+// resolve dependency injection for iendpointfilter
+builder.Services.AddScoped(typeof(IValidator<>), typeof(BasicValidator<>));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -35,27 +40,8 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
-
-app.MapGet("/weatherforecast", () =>
-{
-    var forecast = Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
-})
-.WithName("GetWeatherForecast")
-.WithOpenApi();
-
 ApplyMigration();
+app.ConfigureCartEndpoints();
 app.Run();
 
 
@@ -70,9 +56,4 @@ void ApplyMigration()
             _db.Database.Migrate();
         }
     }
-}
-
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
 }
