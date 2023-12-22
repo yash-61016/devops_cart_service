@@ -19,7 +19,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<ICartOverviewRepository, CartOverviewRepository>();
 builder.Services.AddScoped<ICartProductRepository, CartProductRepository>();
 
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnectionString");
+var connectionString = builder.Configuration.GetConnectionString("CartDbConnectionString");
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(connectionString));
