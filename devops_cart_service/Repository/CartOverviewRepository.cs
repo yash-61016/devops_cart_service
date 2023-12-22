@@ -15,12 +15,12 @@ namespace devops_cart_service.Repository
 
         public async Task<CartOverview> GetCartOverviewByIdAsync(int id)
         {
-            return await _db.CartOverviews.FirstOrDefaultAsync(u => u.CartId == id);
+            return await _db.CartOverviews.FirstOrDefaultAsync(u => u.CartId == id && !u.IsDeleted) ?? throw new Exception("CartOverview not found");
         }
 
         public async Task<CartOverview> GetCartOverviewByUserIdAsync(int userId)
         {
-            return await _db.CartOverviews.FirstOrDefaultAsync(u => u.UserId == userId);
+            return await _db.CartOverviews.FirstOrDefaultAsync(u => u.UserId == userId && !u.IsCheckedOut && !u.IsDeleted) ?? throw new Exception("CartOverview not found");
         }
 
         public async Task CreateCartOverviewAsync(CartOverview cartOverview)
@@ -35,11 +35,6 @@ namespace devops_cart_service.Repository
             await SaveAsync();
         }
 
-        public async Task DeleteCartOverviewAsync(CartOverview cartOverview)
-        {
-            _db.CartOverviews.Remove(cartOverview);
-            await SaveAsync();
-        }
 
         public async Task SaveAsync()
         {

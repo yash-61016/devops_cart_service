@@ -8,7 +8,6 @@ namespace devops_cart_service.Repository.IRepository
         Task<CartOverview> GetCartOverviewByUserIdAsync(int userId);
         Task CreateCartOverviewAsync(CartOverview cartOverview);
         Task UpdateCartOverviewAsync(CartOverview cartOverview);
-        Task DeleteCartOverviewAsync(CartOverview cartOverview);
         Task SaveAsync();
     }
 }

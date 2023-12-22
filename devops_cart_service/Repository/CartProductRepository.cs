@@ -12,14 +12,9 @@ namespace devops_cart_service.Repository
             _db = db;
         }
 
-        public async Task<CartProduct> GetCartProductByIdAsync(int id)
-        {
-            return await _db.CartProducts.FirstOrDefaultAsync(u => u.CartProductId == id);
-        }
-
         public async Task<ICollection<CartProduct>> GetCartProductsByCartIdAsync(int cartId)
         {
-            return await _db.CartProducts.Where(u => u.CartId == cartId).ToListAsync();
+            return await _db.CartProducts.Where(u => u.CartId == cartId && !u.IsDeleted).ToListAsync();
         }
 
         public async Task CreateCartProductAsync(CartProduct cartProduct)
@@ -34,11 +29,6 @@ namespace devops_cart_service.Repository
             await SaveAsync();
         }
 
-        public async Task DeleteCartProductAsync(CartProduct cartProduct)
-        {
-            _db.CartProducts.Remove(cartProduct);
-            await SaveAsync();
-        }
 
         public async Task SaveAsync()
         {

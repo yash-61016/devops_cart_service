@@ -12,8 +12,11 @@ namespace devops_cart_service
             {
                 config.CreateMap<CartOverview, CartOverviewDto>().ReverseMap();
                 config.CreateMap<CartOverview, CartOverviewCreateDto>().ReverseMap();
+                config.CreateMap<CartOverview, CartOverviewUpdateDto>().ReverseMap();
                 config.CreateMap<CartProduct, CartProductDto>().ReverseMap();
                 config.CreateMap<CartProduct, CartProductCreateDto>().ReverseMap();
+                config.CreateMap<CartProduct, CartProductUpdateDto>().ReverseMap();
+                config.CreateMap<Cart, CartDto>().ReverseMap();
             });
             return mappingConfig;
         }
