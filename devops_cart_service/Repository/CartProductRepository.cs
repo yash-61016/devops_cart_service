@@ -19,12 +19,15 @@ namespace devops_cart_service.Repository
 
         public async Task CreateCartProductAsync(CartProduct cartProduct)
         {
+            cartProduct.CreatedAt = DateTimeOffset.Now;
+            cartProduct.UpdatedAt = DateTimeOffset.Now;
             await _db.CartProducts.AddAsync(cartProduct);
             await SaveAsync();
         }
 
         public async Task UpdateCartProductAsync(CartProduct cartProduct)
         {
+            cartProduct.UpdatedAt = DateTimeOffset.Now;
             _db.CartProducts.Update(cartProduct);
             await SaveAsync();
         }

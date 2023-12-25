@@ -48,12 +48,10 @@ namespace devops_cart_service.Endpoints
             {
                 var cartOverview = _mapper.Map<CartOverview>(cart_C_DTO.CartOverview);
                 var cartProducts = _mapper.Map<IEnumerable<CartProduct>>(cart_C_DTO.CartProducts);
-                cartOverview.CreatedAt = DateTimeOffset.Now;
                 await _cartOverviewRepo.CreateCartOverviewAsync(cartOverview);
                 foreach (var cartProduct in cartProducts)
                 {
                     cartProduct.CartId = cartOverview.CartId;
-                    cartProduct.CreatedAt = DateTimeOffset.Now;
                     await _cartProductRepo.CreateCartProductAsync(cartProduct);
                 }
                 var cart = new Cart
@@ -113,12 +111,10 @@ namespace devops_cart_service.Endpoints
             {
                 var cartOverview = _mapper.Map<CartOverview>(cart_DTO.CartOverview);
                 var cartProducts = _mapper.Map<IEnumerable<CartProduct>>(cart_DTO.CartProducts);
-                cartOverview.UpdatedAt = DateTimeOffset.Now;
                 await _cartOverviewRepo.UpdateCartOverviewAsync(cartOverview);
                 foreach (var cartProduct in cartProducts)
                 {
                     cartProduct.CartId = cartOverview.CartId;
-                    cartProduct.UpdatedAt = DateTimeOffset.Now;
                     await _cartProductRepo.UpdateCartProductAsync(cartProduct);
                 }
                 var cart = new Cart
@@ -149,7 +145,6 @@ namespace devops_cart_service.Endpoints
             {
                 var cartOverview = await _cartOverviewRepo.GetCartOverviewByIdAsync(cartId);
                 cartOverview.IsDeleted = true;
-                cartOverview.UpdatedAt = DateTimeOffset.Now;
                 await _cartOverviewRepo.UpdateCartOverviewAsync(cartOverview);
 
                 response.IsSuccess = true;
