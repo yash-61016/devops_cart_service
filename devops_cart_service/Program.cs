@@ -6,6 +6,8 @@ using devops_cart_service.Filters;
 using devops_cart_service.Models.Dto;
 using devops_cart_service.Repository;
 using devops_cart_service.Repository.IRepository;
+using devops_cart_service.Services;
+using devops_cart_service.Services.IService;
 using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,7 +17,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
+builder.Services.AddScoped<ICartService, CartService>();
 builder.Services.AddScoped<ICartOverviewRepository, CartOverviewRepository>();
 builder.Services.AddScoped<ICartProductRepository, CartProductRepository>();
 
