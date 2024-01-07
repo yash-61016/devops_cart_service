@@ -14,24 +14,24 @@ namespace devops_cart_service.Endpoints
     {
         public static void ConfigureCartEndpoints(this WebApplication app)
         {
-            app.MapPost("/api/cart/create", CreateCart)
+            app.MapPost("/cart/create", CreateCart)
             .WithName("CreateCart")
             .Accepts<CartCreateDto>("application/json")
             .Produces<APIResponse>(201)
             .Produces(400);
 
-            app.MapGet("/api/cart/user-{userId}", GetCart)
+            app.MapGet("/cart/user-{userId}", GetCart)
             .WithName("GetCart")
             .Produces<APIResponse>(200)
             .Produces(400);
 
-            app.MapPut("/api/cart/update", UpdateCart)
+            app.MapPut("/cart/update", UpdateCart)
             .WithName("UpdateCart")
             .Accepts<CartDto>("application/json")
             .Produces<APIResponse>(200)
             .Produces(400);
 
-            app.MapDelete("/api/cart/{cartId}", DeleteCart)
+            app.MapDelete("/cart/{cartId}", DeleteCart)
             .WithName("DeleteCart")
             .Produces<APIResponse>(204)
             .Produces(400);
