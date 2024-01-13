@@ -29,13 +29,19 @@ namespace devops_cart_service.Services
                 var cartOverview = _mapper.Map<CartOverview>(cart_C_DTO.CartOverview);
                 var cartProducts = _mapper.Map<IEnumerable<CartProduct>>(cart_C_DTO.CartProducts);
 
-                var existingCartOverview = await _cartOverviewRepo.GetCartOverviewByUserIdAsync(cartOverview.UserId);
-                if (existingCartOverview != null && !existingCartOverview.IsDeleted)
+                try
                 {
-                    existingCartOverview.IsDeleted = true;
-                    await _cartOverviewRepo.UpdateCartOverviewAsync(existingCartOverview);
+                    var existingCartOverview = await _cartOverviewRepo.GetCartOverviewByUserIdAsync(cartOverview.UserId);
+                    if (existingCartOverview != null && !existingCartOverview.IsDeleted)
+                    {
+                        existingCartOverview.IsDeleted = true;
+                        await _cartOverviewRepo.UpdateCartOverviewAsync(existingCartOverview);
+                    }
                 }
-
+                catch (Exception ex)
+                {
+                    // TODO log exception
+                }
                 await _cartOverviewRepo.CreateCartOverviewAsync(cartOverview);
                 foreach (var cartProduct in cartProducts)
                 {
@@ -47,7 +53,9 @@ namespace devops_cart_service.Services
                     CartOverview = cartOverview,
                     CartProducts = cartProducts
                 };
+
                 response.Result = _mapper.Map<CartDto>(cart);
+                // response.Result = existingCartOverview;
                 response.IsSuccess = true;
                 response.StatusCode = HttpStatusCode.Created;
                 return response;
