@@ -125,6 +125,11 @@ namespace devops_cart_service.Services
                     cartProduct.CartId = cartOverview.CartId;
                     await _cartProductRepo.UpdateCartProductAsync(cartProduct);
                 }
+
+                if (cartOverview.IsCheckedOut)
+                {
+                    await _cartOverviewRepo.CheckoutCartOverviewAsync(cartOverview);
+                }
                 var cart = new Cart
                 {
                     CartOverview = cartOverview,

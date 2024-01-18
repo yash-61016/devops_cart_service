@@ -43,5 +43,10 @@ namespace devops_cart_service.Repository
         {
             await _db.SaveChangesAsync();
         }
+
+        public Task CheckoutCartOverviewAsync(CartOverview cartOverview)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
