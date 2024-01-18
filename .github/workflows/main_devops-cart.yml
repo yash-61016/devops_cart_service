@@ -27,6 +27,7 @@ jobs:
 
   build:
     runs-on: windows-latest
+    needs: test
 
     steps:
       - name: Checkout code
@@ -70,4 +71,4 @@ jobs:
           app-name: "devops-cart"
           slot-name: "Production"
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_7C77BC762DFB49908744328419852F81 }}
-          package: ${{ github.workspace }}/.net-app
+          package: .
