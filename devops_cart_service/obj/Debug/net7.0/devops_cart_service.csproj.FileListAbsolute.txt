@@ -45,3 +45,11 @@
 /Users/yashpatel/developer/z_repos/uni_devops/devops_cart_service/devops_cart_service/bin/Debug/net7.0/Npgsql.dll
 /Users/yashpatel/developer/z_repos/uni_devops/devops_cart_service/devops_cart_service/bin/Debug/net7.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll
 /Users/yashpatel/developer/z_repos/uni_devops/devops_cart_service/devops_cart_service/bin/Debug/net7.0/System.CodeDom.dll
+/Users/yashpatel/developer/z_repos/uni_devops/devops_cart_service/devops_cart_service/bin/Debug/net7.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
+/Users/yashpatel/developer/z_repos/uni_devops/devops_cart_service/devops_cart_service/bin/Debug/net7.0/Microsoft.IdentityModel.Abstractions.dll
+/Users/yashpatel/developer/z_repos/uni_devops/devops_cart_service/devops_cart_service/bin/Debug/net7.0/Microsoft.IdentityModel.JsonWebTokens.dll
+/Users/yashpatel/developer/z_repos/uni_devops/devops_cart_service/devops_cart_service/bin/Debug/net7.0/Microsoft.IdentityModel.Logging.dll
+/Users/yashpatel/developer/z_repos/uni_devops/devops_cart_service/devops_cart_service/bin/Debug/net7.0/Microsoft.IdentityModel.Protocols.dll
+/Users/yashpatel/developer/z_repos/uni_devops/devops_cart_service/devops_cart_service/bin/Debug/net7.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+/Users/yashpatel/developer/z_repos/uni_devops/devops_cart_service/devops_cart_service/bin/Debug/net7.0/Microsoft.IdentityModel.Tokens.dll
+/Users/yashpatel/developer/z_repos/uni_devops/devops_cart_service/devops_cart_service/bin/Debug/net7.0/System.IdentityModel.Tokens.Jwt.dll

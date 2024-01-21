@@ -23,7 +23,8 @@ namespace devops_cart_service.Endpoints
             app.MapGet("/cart/user-{userId}", GetCart)
             .WithName("GetCart")
             .Produces<APIResponse>(200)
-            .Produces(400);
+            .Produces(400)
+            .RequireAuthorization();
 
             app.MapPut("/cart/update", UpdateCart)
             .WithName("UpdateCart")
