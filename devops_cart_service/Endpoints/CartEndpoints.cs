@@ -18,7 +18,8 @@ namespace devops_cart_service.Endpoints
             .WithName("CreateCart")
             .Accepts<CartCreateDto>("application/json")
             .Produces<APIResponse>(201)
-            .Produces(400);
+            .Produces(400)
+            .RequireAuthorization();
 
             app.MapGet("/cart/user-{userId}", GetCart)
             .WithName("GetCart")
@@ -30,12 +31,14 @@ namespace devops_cart_service.Endpoints
             .WithName("UpdateCart")
             .Accepts<CartDto>("application/json")
             .Produces<APIResponse>(200)
-            .Produces(400);
+            .Produces(400)
+            .RequireAuthorization();
 
             app.MapDelete("/cart/{cartId}", DeleteCart)
             .WithName("DeleteCart")
             .Produces<APIResponse>(204)
-            .Produces(400);
+            .Produces(400)
+            .RequireAuthorization();
 
         }
 
